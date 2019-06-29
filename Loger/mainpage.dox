@@ -1,0 +1,53 @@
+/**
+\mainpage The mainpage documentation
+
+Tworzenie logów w programie.
+
+Autor: <b>Wojciech Kogut</b> \n
+Data utworzenia projektu: 2017.01.17 \n
+
+
+
+\par Konfiguracja
+Aby korzystać z obiektu KWLoger należy odpowiednio go skonfigurować za pomocą metod KWLoger::addWriter(...) oraz odpowiednich obiektów implementujących interfejs KWWriter. W konstruktorze KWWriter należy wskazać obiekt KWFormater który będzie odpowiedzialny za formatowanie tekstu. Należy rówież określić poziomy logowaia dla każdego obiektu KWWriter.
+\code{.cpp}
+KWWriter* writer = new KWWriterCout(new KWSimpleFormater();
+KWWriter* filewriter = new KWWriterFile(new KWFormater(), "fileout.txt");
+
+KWLoger* log = new KWLoger();
+log->addWriter(writer, KWLoger::DEBUG | KWLoger::ERROR);
+log->addWriter(filewriter, KWLoger::ERROR | KWLoger::INFO | KWLoger::TRACE | KWLoger::WARNING);
+\endcode
+Wyłączyć logowanie można za pomocą metody KWLoger::setEnable(...) lub globalnie poprzez utworzenie obiktu KWDisabledLoger zamiast standardowego KWLoger.
+\endpar
+
+\par Wykorzystanie klasy
+Dane do logera wysyła się za pomocą metod logXXX(...):
+\code{.cpp}
+log->logDebug("debug\n");
+log->logError("erroe\n");
+log->logInfo("info\n");
+log->logTrace("trace\n");
+log->logWarning("warning\n");
+\endcode
+\endpar
+*/
+
+\note
+--wskazówka--
+
+\warning
+--ostrzeżenie--
+
+\refitem --item--			\\odnośnik
+\ref --item-- "--tekst--"	\\odnośnik z tekstem
+
+\par --par--
+--tekst--
+\endpar
+
+\code{.cpp}
+--kod--
+\endcode
+
+http://www.stack.nl/~dimitri/doxygen/manual/commands.html

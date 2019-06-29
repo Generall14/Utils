@@ -1,4 +1,5 @@
 *.user
-build-*/*
+build*/*
 *.xml
 __pycache__
+*doc_doxygen*
