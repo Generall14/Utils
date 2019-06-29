@@ -1,0 +1,82 @@
+/**
+\mainpage The mainpage documentation
+
+Klasy i makra ułatwiające przeprowadzanie testów jednostkowych. \n \n
+
+Autor: <b>Wojciech Kogut</b> \n
+Data utworzenia projektu: 2016.07.12 \n
+
+\par Wykorzystanie
+<b>1. </b>Należy rozszerzyć klasę KWTest, umieszczając testy jednostkowe (makra _KWTEST(COND) itp.) w wirtualnej funkcji KWTest::Tests(). Przykład:
+\code{.cpp}
+class Test1 : public KWTest
+{
+public:
+	Test1():KWTest("Test testowy 1"){}
+protected:
+	void Tests()
+	{
+		_CODE(int i=1;)
+		_KWTEST(1==i)
+		_KWTEST(2==i)
+	}
+};
+\endcode
+Powyższy twór można uruchomić funkcją KWTest::Run(), lub:\n
+<b>2. </b> Utworzyć obiekt KWTester i przekazać mu dowolną liczbę wskaźników na rozszerzenia KWTest:
+\code{.cpp}
+KWTester a("Plik wyjsciowy.txt", KWTester::All, KWTester::All);
+a.AddTest(new Test1());
+a.AddTest(new Test2());
+\endcode
+Aby wykonać wszystkie testy umieszczone w KWTester, wywołuje się funkcję KWTester::Run(), dla parametrów jak w powyższym przykładzie, wynik będzie wyglądał:
+\code{.cpp}
+#>>>>           Rozpoczynanie testów           <<<<
+#
+#
+#Rozpoczynanie serii testów: Test testowy 1
+#             # int i=1;
+#   1 [ Ok  ] 1==i
+#   2 [Error] 2==i
+#Wykonano 2 testów, wynik 1 prób okazał się nieprawidłowy
+#Ostateczny wynik: TRAGEDIA!
+#
+#Rozpoczynanie serii testów: Test testowy 2
+#   1 [ Ok  ] 7==7
+#   2 [ Ok  ] 8==8
+#Wykonano 2 testów, wynik 0 prób okazał się nieprawidłowy
+#Ostateczny wynik: Wszystko w porządku.
+#
+#
+#>>>>           Koniec testów                  <<<<
+#
+#Łącznie wykonano 4 testów, 1 z nich zakończyło się błędem.
+#
+#>>>>           ŹLE!!!                         <<<<
+\endcode
+\endpar
+
+\par Konfiguracja
+- Definiując NOCOLORS przed dołączeniem pliku KWTester.hpp lub KWTest.hpp wyłącza się kolorowe komunikaty w konsoli.
+\endpar
+*/
+
+
+\note
+--wskazówka--
+
+\warning
+--ostrzeżenie--
+
+\refitem --item--			\\odnośnik
+\ref --item-- "--tekst--"	\\odnośnik z tekstem
+
+\par --par--
+--tekst--
+\endpar
+
+\code{.cpp}
+--kod--
+\endcode
+
+http://www.stack.nl/~dimitri/doxygen/manual/commands.html

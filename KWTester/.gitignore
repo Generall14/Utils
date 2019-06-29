@@ -1,0 +1,7 @@
+*.o
+main
+*.txt
+doc_doxygen/
+*.a
+*.so
+*.dll
