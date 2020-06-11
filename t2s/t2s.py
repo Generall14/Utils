@@ -2,11 +2,12 @@ import os
 
 tab_size = 4
 rstrip_lines = True
-root = "./"
-suffixes = [".py"]
+root = "C:/GRP/MIL/data_defs/CAN/addr"
+suffixes = [".h"]
 excluded = []
+reqnames = ["ARM33B"]
 
-def fileList(root, suffixes, excludePatterns=[]):
+def fileList(root, suffixes, excludePatterns=[], reqnames=[]):
     files = []
     for f in os.scandir(root):
         if f.is_dir():
@@ -16,6 +17,12 @@ def fileList(root, suffixes, excludePatterns=[]):
             for val in excludePatterns:
                 if val in f.path:
                     excluded = True
+                    break
+            if len(reqnames) > 0:
+                excluded = True
+                for val in reqnames:
+                    if val in f.path:
+                        excluded = False
                     break
             if excluded:
                 continue
@@ -53,7 +60,7 @@ def parse_file(fileAdr):
     f.close()
 
 def do_the_job():
-    flist = fileList(root, suffixes, excluded)
+    flist = fileList(root, suffixes, excluded, reqnames)
     print("File list:")
     print("========")
     for f in flist: print(f)
